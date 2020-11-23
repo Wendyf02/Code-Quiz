@@ -1,0 +1,114 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* color */
+.:root {
+    --primary:  rgb(237, 243, 250);
+    --secondary: rgb(238, 92, 8);
+    --tertiary: #0e0ae9;
+}
+
+header {
+    padding:10px;
+    position: absolute;
+    width: 100%;
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    top: 0;
+    border-bottom: double var(--tertiary);
+}
+
+header h1 {
+    font-weight: lighter;
+    align-items: center;
+    font-size: 4.0vw;
+    margin: 30px;
+    color: var(--primary)
+    justify-content: space-between;
+}
+
+header h2, h3 {
+    font-weight: lighter;
+    font-size: 1.75vw;
+    margin:40px;
+    justify-content: space-between;
+    color: var(--primary)
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vw;
+    justify-content:center;
+    align-items: center;
+    background-color: var(--primary);
+}
+
+
+.controls { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+.container {
+    width: 800px;
+    max-width: 80px;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 200px 0px 10px 10px;
+}
+
+
+
+
+
+
+
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--secondary);
+
+}    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
