@@ -1,7 +1,7 @@
-var startButton = document.getElementById("start-btn");
+var startButton = document.querySelector("#start-btn");
 var startBtn = document.querySelector("#start-btn");
 
-var questioncontainerEl = document.getElementById("question-container");
+var questioncontainerEl = document.querySelector("#question-container");
 var questionDiv = document.querySelector("#questions");
 var index = 0;
 var answer1 = document.querySelector("#answer1");
@@ -12,10 +12,10 @@ var answer4 = document.querySelector("#answer4");
 var timeleftDiplay = document.querySelector("#time-left");
 var initialBtn = document.querySelector("#initial-btn");
 var initalInput = document.querySelector("#initial-input");
-var initialEl = document.getElementById("initials");
+var initialEl = document.querySelector("#initials");
 var scoreDisplay = document.querySelector("#high scores");
 var highscores = []
-var answerStatusEl = document.getElementById("answer-status");
+var answerStatusEl = document.querySelector("#answer-status");
 var selectAnswerTimeout = null
 
 let timeleft = 10;
@@ -49,9 +49,9 @@ function resetState() {
 //function to begin next question
 function setNextQuestion() {
     // change to visible answer
-  while (answer1.answer2,answe3,answer4.firstChild) {
-      answer1.answer2,answe3,answer4.removeChild
-      (answer1.answer2,answe3,answer4.firstChild)
+  while (answer.firstChild) {
+         answer.removeChild
+        (answer.firstChild)
   }
       showQuestion(shuffledQuestions[currentQuestionIndex])
   }
@@ -59,16 +59,16 @@ function setNextQuestion() {
     
 // function to make question appear 
 function showQuestion(questions) {
-  questionDiv.innerContent = question.question
-  questions.answers.forEach(answer  => {
-        var button = document.createdElement ("button")
-        button.innerText = answer.text
+  questionDiv.innerText = question.question
+  question.answers.forEach(answer  => {
+        const button = document.createdElement ("button")
+        button.innerText= answer.text
         button.classlist.add("btn")
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
         button.addEventListener("click", selectAnswer)
-        answer1.answer2,answer3,answer4.appendChild(button)
+        answer.appendChild(button)
   })
 } 
 
@@ -93,57 +93,39 @@ function selectAnswer(e) {
 
 // questions array
 var questions =[ 
-    {
+  {
       question: "1-What is the correct place to insert a JavaScript?", 
-      answer1: ["The 'head' section" ,"The'body' section","Both the 'head' and 'body' section ","All of the above"], 
-      correct: "Both the 'head' and 'body' section"  
-    }     
-]
+      answer: ["a-The 'head' section" ,"b-The'body' section","c-Both the 'head' and 'body' section ","d-All of the above"], 
+      correct: "c-Both the 'head' and 'body' section"  
+          
+  },    
+  {
+      question: "2-How you can create a function in JavaScript?", 
+      answer: ["a-function = myFunction()" ,"b-function myFunction()","c-function:myFunction() ","d-All of the above"], 
+      correct: "b-function myFunction()"   
+  }, 
+  {
+      question: "3-To access and HTMl element,what method does the javaScript uses?", 
+      answer: ["a-toExponential()" , "b-element,addEventListerner(event,function,useCapture" , "c-document.getElementById(id)method" , "d-All of the above"], 
+      correct: "c-document.getElementById(id)method"
 
-function renderquestion()   {
+  }, 
+ {
+      question: "4-How can you add comment in JavaScript?", 
+      answer: ["a-'comment" ,"b-//comment"  , "c-|| comment ", "d-All of the above"], 
+      correct: "b-//comment"  
+
+  }  
+]
+function renderQuestion()   {
   questionDiv.textContent= questions[index].question
   answer1.textContent=questions[index].answer[0]
+  answer2.textContent=questions[index].answer[1]
+  answer3.textContent=questions[index].answer[2]
+  answer4.textContent=questions[index].answer[3]
 }
-
-var questions =[ 
-  {
-    question: "2-How you can create a function in JavaScript?", 
-    answer2: ["function = myFunction()" ,"function myFunction()","function:myFunction() ","All of the above"], 
-    correct: "function myFunction()"  
-  }  
-
-  function renderquestion()   {
-    questionDiv.textContent= questions[index].question
-    answer2.textContent=questions[index].answer[1]
-}
-
-  var questions =[ 
-    {
-      question: "3-To access and HTMl element,what method does the javaScript uses?", 
-      answer3: ["toExponential()" , "element,addEventListerner(event,function,useCapture" , "document.getElementById(id)method" , "All of the above"], 
-      correct: "document.getElementById(id)method" 
-
-    }  
-
-function renderquestion()   {
-    questionDiv.textContent= questions[index].question
-    answer3.textContent=questions[index].answer[1+]
-}
-
-
-var questions =[ 
-  {
-    question: "4-How can you add comment in JavaScript?", 
-    answer4: ["'comment" ,"//comment"  , "|| comment ", "All of the above"], 
-    correct: "//comment"  
-
-  }  
-
-  function renderquestion()   {
-    questionDiv.textContent= questions[index].question
-    answer4.textContent=questions[index].answer[1++]
-}
-
+  
+ 
 
 // timer variables
 
