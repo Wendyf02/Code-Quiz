@@ -12,7 +12,7 @@
 
 /*----HEADER-----*/
 
-header {
+ header {
     padding:10px;
     position: absolute; 
     width: 100%;
@@ -20,7 +20,7 @@ header {
     top: 0;
     border-bottom: double var(--tertiary) 10px;
     text-align: center;
-}
+} 
 
 header h1 {
     font-weight: lighter;
@@ -70,10 +70,10 @@ body {
     text-align: center;
 }
 
-.hide {
+/* .hide {
     display: none;
-    float: right;  */
-} 
+    float: right;  
+}   */
 
 .question {
     font-weight: lighter;
