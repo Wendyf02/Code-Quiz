@@ -9,6 +9,7 @@ var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 
+
 var timeleftDiplay = document.querySelector("#time-left");
 var initialBtn = document.querySelector("#initial-btn");
 var initalInput = document.querySelector("#initial-input");
@@ -25,7 +26,7 @@ let shufflequestion, currentQuestionIndex
 
 
 // function start quiz
-function startButton() { 
+function startQuiz() { 
   resetState()
   startButton.classlist.add("hide")
   scoreDisplay.classList.add("hide")
@@ -118,7 +119,7 @@ var questions =[
   }  
 ]
 function renderQuestion()   {
-  questionDiv.textContent= questions[index].question
+  questionDiv.textContent=questions[index].question
   answer1.textContent=questions[index].answer[0]
   answer2.textContent=questions[index].answer[1]
   answer3.textContent=questions[index].answer[2]
@@ -155,25 +156,24 @@ function keepScore(isCorrect) {
 
 
 
-  // initials function
+// initials function
 
 
 
 
-  //save score
+//save score
 
 
 
 
-  //ensure initials are entered before saving
+//ensure initials are entered before saving
 
 
 
 
-
-  //display scores
-
+//display scores
 
 
 
-  
+renderQuestion();
+ 

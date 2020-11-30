@@ -34,4 +34,10 @@
  
 
 
+   //  document.addEventListener("DOMcontentLoaded", () => {
+  //  startButton.addEventListener("click", startQuiz)
+  //  initialBtn.addEventListener("click",saveScore)
+  //  initialInput.addEventListener("input", handleSubmitButtonState)
+ 
   
+  //  })
