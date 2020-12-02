@@ -24,28 +24,6 @@ let score = 0;
 let shufflequestion, currentQuestionIndex
 
 
-
-// timer variables
-var myTimer = null
-var timer = function(){
-    if(timeLeft <= 0) {
-      stopTimer();
-      enterInitials();
-    }
-    const time = --timeLeft
-    timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
-}
-
-// timer function
-function startTimer() {
-  myTimer = setInterval(timer, 1000)
-}
-
-function stopTimer()  {
-   if (mytimer) {clearInterval(myTimer)}
-   timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
-}
-
 // reset quiz
 function resetState() {
   timeLeftDisplay.innerHTML = 20
@@ -195,6 +173,30 @@ function renderQuestion()   {
   answer3.textContent=questions[index].answer[2]
   answer4.textContent=questions[index].answer[3]
 }
+
+// timer variables
+var myTimer = null
+var timer = function(){
+    if(timeLeft <= 0) {
+      stopTimer();
+      enterInitials();
+    }
+    const time = --timeLeft
+    timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+}
+
+// timer function
+function startTimer() {
+  myTimer = setInterval(timer, 1000)
+}
+
+function stopTimer() {
+  if (myTimer) {clearInterval(myTimer)}
+   timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+}
+
+
+
 
 renderQuestion();
 

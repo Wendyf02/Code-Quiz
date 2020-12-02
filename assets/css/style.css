@@ -20,7 +20,7 @@
     top: 0;
     border-bottom: double var(--tertiary) 10px;
     text-align: center;
-}  */
+}   */
 
 header h1 {
     font-weight: lighter;
@@ -72,7 +72,7 @@ body {
 /* .hide {
     display: none;
     float: right;  
-}     */
+}      */
 
 .question {
     font-weight: lighter;
