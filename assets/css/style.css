@@ -12,15 +12,15 @@
 
 /*----HEADER-----*/
 
- /* header {
-    padding:10px;
+header {
+    padding:8px;
     position: absolute; 
     width: 100%;
     background-color: var(--secondary);
     top: 0;
     border-bottom: double var(--tertiary) 10px;
     text-align: center;
-}   */
+}   
 
 header h1 {
     font-weight: lighter;
@@ -69,10 +69,10 @@ body {
     font-style:italic;
     text-align: center;
 }
-/* .hide {
+.hide {
     display: none;
     float: right;  
-}      */
+}      
 
 .question {
     font-weight: lighter;

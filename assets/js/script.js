@@ -1,6 +1,6 @@
 var startButton = document.getElementById("start-btn");
-var startBtn = document.querySelector("#start-btn");
-
+var answerbuttons = document.getElementsByClassName("answer-Btn")
+console.log(startButton)
 var questioncontainerEl = document.getElementById("question-container");
 var questionDiv = document.querySelector("#question");
 var index = 0;
@@ -11,15 +11,15 @@ var answer4 = document.querySelector("#answer4");
 
 
 var timeleftDiplay = document.querySelector("#time-left");
-var initialBtn = document.querySelector("#initial-btn");
-var initalInput = document.querySelector("#initial-input");
+var initialBtn = document.querySelector("#initials-btn");
+var initialInput = document.querySelector("#initial-input");
 var initialEl = document.getElementById("initials");
-var scoreDisplay = document.getElementById("high scores");
+var scoreDisplay = document.getElementById("high-scores");
 var highscores = []
 var answerStatusEl = document.getElementById("answer-status");
 var selectAnswerTimeout = null
 
-let timeleft = 20;
+let timeLeft = 20;
 let score = 0;
 let shufflequestion, currentQuestionIndex
 
@@ -36,30 +36,32 @@ function resetState() {
 
 // function start quiz
 function startQuiz() { 
-   resetState()
-   startButton.classlist.add("hide")
+
+  console.log("start")
+
+  //  resetState()
+   startButton.classList.add("hide")
    scoreDisplay.classList.add("hide")
-   questioncontainerEl.classlist.remove("hide")
+   questioncontainerEl.classList.remove("hide")
    shuffleQuestions = questions.sort(() => Math.random() - .5)
    currentQuestionIndex = 0
-   questioncontainerEl.classlist.remove("hide")
-   setNextQuestion();
+   renderQuestion();
 }
 
-//function to begin next question
-function setNextQuestion() {
-    // change to visible answer
-  while (answer.firstChild) {
-         answer.removeChild
-        (answer.firstChild)
-  }
-      showQuestion(shuffledQuestions[currentQuestionIndex])
-  }
+// //function to begin next question
+// function setNextQuestion() {
+//     // change to visible answer
+//   while (answer.firstChild) {
+//          answer.removeChild
+//         (answer.firstChild)
+//   }
+//       showQuestion(shuffledQuestions[currentQuestionIndex])
+//   }
     
     
 // function to make render question appear 
 function showQuestion(questions) {
-  questionDiv.innerText = questions.question
+  questionDiv.innerText = question.question
   question.answers.forEach(answer  => {
         const button = document.createdElement ("button")
         button.innerText= answer.text
@@ -74,28 +76,30 @@ function showQuestion(questions) {
 
 //shuffle through -question array
 function selectAnswer(e) {
-    selectedButton = e.target
-    correct = selectedButton.dataset.correct
-    keepScore(correct) 
-    answerStatusEl.inneerHTML = correct ? "correct, one point has been added!" : "wrong, two seconds have been deducted"
-    selectAnswerTimeout  = setTimeout(() => {
-        if (shuffleQuestions.length > currentQuestionIndex + 1) {
-            currentQuestionIndex++
-            answerStatus.innerHTML = ""
-            setNextQuestion()
+    selectedButton = e.target.textContent
+    correct = questions[index].correct
+    keepScore(correct,selectedButton)
+   
+   
+        if (questions.length > index + 1) {
+            index++
+          
+            renderQuestion()
         } else {
-            topTimer()
+            // stopTimer()
             enterInitials()
-            answerStatus.innerHTML = ""
+           
         }
-    }, 1000)
+   
 }
   
 // score function
-function keepScore(isCorrect) {
-          if(isCorrect) {
+function keepScore(Correct,userpick) {
+          if(Correct===userpick) {
+            answerStatusEl.innerHTML = "correct, one point has been added!" 
               score++
           } else {
+            answerStatusEl.innerHTML = "wrong, two seconds have been deducted"
              timeLeft -= 2
           }
 }
@@ -125,10 +129,10 @@ function handleSubmitButtonState() {
 
 //display scores
 function displayScores() {
-      initialEl.classlist.add("hide")
+      initialEl.classList.add("hide")
       scoreDisplay.classList.remove("hide")
       startButton.innerText = "restart"
-      startButton.classList.rremove("hide")
+      startButton.classList.remove("hide")
 
 }
 
@@ -143,26 +147,26 @@ function viewScores() {
 // questions array
 var questions =[ 
   {
-      question: "1-What is the correct place to insert a JavaScript?", 
-      answer: ["a-The 'head' section" ,"b-The'body' section","c-Both the 'head' and 'body' section ","d-All of the above"], 
-      correct: "c-Both the 'head' and 'body' section"  
+      question: "What is the correct place to insert a JavaScript?", 
+      answer: ["The 'head' section" ,"The'body' section","Both the 'head' and 'body' section ","All of the above"], 
+      correct: "Both the 'head' and 'body' section"  
           
   },    
   {
-      question: "2-How you can create a function in JavaScript?", 
-      answer: ["a-function = myFunction()" ,"b-function myFunction()","c-function:myFunction() ","d-All of the above"], 
-      correct: "b-function myFunction()"   
+      question: "How you can create a function in JavaScript?", 
+      answer: ["function = myFunction()" ,"function myFunction()","function:myFunction() ","All of the above"], 
+      correct: "function myFunction()"   
   }, 
   {
-      question: "3-To access and HTMl element,what method does the javaScript uses?", 
-      answer: ["a-toExponential()" , "b-element,addEventListerner(event,function,useCapture" , "c-document.getElementById(id)method" , "d-All of the above"], 
-      correct: "c-document.getElementById(id)method"
+      question: "To access and HTMl element,what method does the javaScript uses?", 
+      answer: ["toExponential()" , "element,addEventListerner(event,function,useCapture" , "document.getElementById(id)method" , "All of the above"], 
+      correct: "document.getElementById(id)method"
 
   }, 
  {
-      question: "4-How can you add comment in JavaScript?", 
-      answer: ["a-'comment" ,"b-//comment"  , "c-|| comment ", "d-All of the above"], 
-      correct: "b-//comment"  
+      question: "How can you add comment in JavaScript?", 
+      answer: ["'comment" ,"//comment"  , "|| comment ", "All of the above"], 
+      correct: "//comment"  
 
   }  
 ]
@@ -198,12 +202,15 @@ function stopTimer() {
 
 
 
-renderQuestion();
 
-document.addEventListener("DOMcontentLoaded", () => {
+
 startButton.addEventListener("click", startQuiz)
+for (let i = 0; i < answerbuttons.length; i++) {
+  answerbuttons[i].addEventListener("click" ,selectAnswer)
+  
+}
 initialBtn.addEventListener("click",saveScore)
 initialInput.addEventListener("input", handleSubmitButtonState)
  
   
-})
+
