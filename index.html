@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
     <link href="./assets/css/style.css" rel="stylesheet" />
 
-    <title>JavaScript Quiz</title>
-
+    <title>Code Quiz</title>
 </head>
 
 <header>
-
-<h1>Code Quiz</h1>
-    
+    <h1>Code Quiz</h1>
 </header>
 
 <body>
-
-  <div class= "container"></div>
-    <div id="question container" class="hide">
-      <div id="question" class="question">Question:</div>
-        <div id="answer-button" class="btn-grid">
-            <button class="btn">Answer 1</button>
-            <button class="btn">Answer 2</button>
-            <button class="btn">Answer 3</button>
-            <button class="btn">Answer 4</button> 
+    <div class="container">
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button id="answer1" class="btn">Answer 1</button>
+                <button id="answer2" class="btn">Answer 2</button>  
+                <button id="answer3"class="btn">Answer 3</button>
+                <button id="answer4" class="btn">Answer 4</button>     
+            </div>
+            <div id="answer-status" class="answer-status"></div>
         </div>
-        <div id="answer-status" class="answer-status"></div>
+        <div class="hide" id="initials">
+            <h1 class="initial-entry">please enter initials:</h1>
+            <input id="initial-input" class="initial-text-box" type="text" placeholder="enter initial here"/>
+            <button disabled class="initials-btn btn" id="initials-btn">Save Score</button>
+        </div>
+        <div class="hide high-scores" id="high-scores">
+            <h1 class="score-title">Score:</h1>
+            <div class="Scores" id="scoreContainer"></div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button> 
+        </div>
     </div>
-    <div class="hide" id="initials">
-         <h1 class="initial-entry">Please enter initials:</h1>
-         <input id="initail-input" class="initial-text-box" type="text" placeholder="enter initial here" />
-         <button disabled class="initials-btn"id="initials-btn">Save Score</button>
-    </div>
-           
-    <div class="hide high-scores" id="high-scores">
-         <h1 class="score-title">Score:</h1>
-        <div class="score" id="scorecontainer"></div>
-    </div>
-    <div class="controls">
-          <button id="start-btn" class="start-btn bttn">Start</button>
-    </div>
-  </div>
-     
-      
+    
     <div class="footer">
           
-      <h2 id="countdown">Seconds Left: <span id="time-left">20</span></h2>
-      <h3 id="score" class="score" onclick="viewScores()">View Scores</h3>
-
+        <h2 id="countdown">Seconds Left: <span id="time-left">20</span></h2>
+        <h3 id="score" class="score" onclick="viewScores()">View Scores</h3>
+  
     </footer>
 
-        
-
-        <script src="./assets/js/script.js"></script>
-
-
+      <script src="./assets/js/script.js"></script> 
+    
 </body>
 </html>
