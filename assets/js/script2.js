@@ -34,10 +34,24 @@
 // }
 
 
+// // // reset quiz
+//  function resetState() {
+//   timeLeftDisplay.innerHTML = 20
+//   timeLeft = 20
+//    startTimer()
+//    score = 0
+//    initialInput.value = ""
+//    initialBtn.setAttribute("disabled" , correct)
+//  }
+
+
+
+
+
 const startingMinutes = 20;
 let time = startingMinutes * 60;
 
-const coundownEl = document. getElementById("countdown");
+const coundownEl = document.getElementById("countdown");
 
 setInterval(updateCountdown, 1000);
 

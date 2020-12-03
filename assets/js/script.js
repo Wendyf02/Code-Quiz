@@ -1,6 +1,6 @@
 var startButton = document.getElementById("start-btn");
 var answerbuttons = document.getElementsByClassName("answer-Btn")
-console.log(startButton)
+
 var questioncontainerEl = document.getElementById("question-container");
 var questionDiv = document.querySelector("#question");
 var index = 0;
@@ -10,36 +10,26 @@ var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 
 
-var timeleftDiplay = document.querySelector("#time-left");
 var initialBtn = document.querySelector("#initials-btn");
 var initialInput = document.querySelector("#initial-input");
 var initialEl = document.getElementById("initials");
+
+var scoreDiv = document.getElementById("viewscore");
 var scoreDisplay = document.getElementById("high-scores");
-var highscores = []
+var timeleftDisplay = document.querySelector("#time-left");
+// var countdownEl = document.getElementById("time-left");
+
 var answerStatusEl = document.getElementById("answer-status");
-var selectAnswerTimeout = null
+// var selectAnswerTimeout = null
+var highscores = []
 
 let timeLeft = 20;
 let score = 0;
 let shufflequestion, currentQuestionIndex
 
 
-// reset quiz
-function resetState() {
-  timeLeftDisplay.innerHTML = 20
-  timeLeft = 20
-  startTimer()
-  score = 0
-  initialInput.value = ""
-  initialBtn.setAttribute("disabled" , correct)
-}
-
 // function start quiz
 function startQuiz() { 
-
-  console.log("start")
-
-  //  resetState()
    startButton.classList.add("hide")
    scoreDisplay.classList.add("hide")
    questioncontainerEl.classList.remove("hide")
@@ -48,17 +38,6 @@ function startQuiz() {
    renderQuestion();
 }
 
-// //function to begin next question
-// function setNextQuestion() {
-//     // change to visible answer
-//   while (answer.firstChild) {
-//          answer.removeChild
-//         (answer.firstChild)
-//   }
-//       showQuestion(shuffledQuestions[currentQuestionIndex])
-//   }
-    
-    
 // function to make render question appear 
 function showQuestion(questions) {
   questionDiv.innerText = question.question
@@ -79,21 +58,16 @@ function selectAnswer(e) {
     selectedButton = e.target.textContent
     correct = questions[index].correct
     keepScore(correct,selectedButton)
-   
-   
         if (questions.length > index + 1) {
             index++
-          
             renderQuestion()
         } else {
             // stopTimer()
-            enterInitials()
-           
-        }
-   
+            enterInitials()  
+        }  
 }
   
-// score function
+// keep score of question
 function keepScore(Correct,userpick) {
           if(Correct===userpick) {
             answerStatusEl.innerHTML = "correct, one point has been added!" 
@@ -103,46 +77,6 @@ function keepScore(Correct,userpick) {
              timeLeft -= 2
           }
 }
-
-//save score
-function saveScore() {
-  var scoreDiv = document.createElement("div")
-  scoreDiv.innerHTML = "<h2>" + initialInput.value + "<h2><div>" + score + "</div>"
-  document.getElementById("scoreContainer").append(scoreDiv)
-  displayScores()
-}
-
-// initials function
-function enterInitials() {
-      initialEl.classList.remove("hide")
-      questioncontainerEl.classList.add("hide")
-}
-
-//ensure initials are entered before saving
-function handleSubmitButtonState() {
-         if (initialInput.value) {
-              initialBtn.removeAttribute("disabled")
-         } else {
-              initialBtn.setAttribute("disabled" , correct)
-         }
-}
-
-//display scores
-function displayScores() {
-      initialEl.classList.add("hide")
-      scoreDisplay.classList.remove("hide")
-      startButton.innerText = "restart"
-      startButton.classList.remove("hide")
-
-}
-
-function viewScores() {
-      stopTimer()
-      ClearTimeout(selectAnswerTimeout)
-      questioncontainerEl.classList.add("hide")
-      displayScores()
-}
-
 
 // questions array
 var questions =[ 
@@ -170,6 +104,7 @@ var questions =[
 
   }  
 ]
+
 function renderQuestion()   {
   questionDiv.textContent=questions[index].question
   answer1.textContent=questions[index].answer[0]
@@ -178,39 +113,78 @@ function renderQuestion()   {
   answer4.textContent=questions[index].answer[3]
 }
 
-// timer variables
-var myTimer = null
-var timer = function(){
-    if(timeLeft <= 0) {
-      stopTimer();
-      enterInitials();
-    }
-    const time = --timeLeft
-    timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+
+
+//save score
+function saveScore() {
+    var scoreDiv = document.createElement("div")
+    scoreDiv.innerHTML = "<h2>" + initialInput.value + "</h2><div>" + score + "</div>"
+    document.getElementById("scoreContainer").append(scoreDiv)
+    displayScores()
 }
 
-// timer function
-function startTimer() {
-  myTimer = setInterval(timer, 1000)
+// initials function
+function enterInitials() {
+      initialEl.classList.remove("hide")
+       questioncontainerEl.classList.add("hide")
 }
 
-function stopTimer() {
-  if (myTimer) {clearInterval(myTimer)}
-   timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+//ensure initials are entered before saving
+function handleSubmitButtonState() {
+         if (initialInput.value) {
+              initialBtn.removeAttribute("disabled")
+         } else {
+              initialBtn.setAttribute("disabled" ,correct)
+         }
 }
 
 
+//display scores
+function displayScores() {
+  initialEl.classList.add("hide")
+  scoreDisplay.classList.remove("hide")
+  startButton.innerText = "restart"
+  startButton.classList.remove("hide")
+  
+}
 
+function viewScores() {
+   stopTimer()
+   ClearTimeout(selectAnswerTimeout)
+   questioncontainerEl.classList.add("hide")
+   displayScores()
+}
+
+// // timer variables
+// var myTimer = null
+// var timer = function(){
+//     if(timeLeft <= 0) {
+//       stopTimer();
+//       enterInitials();
+//     }
+//     const time = --timeLeft
+//     timeleftDisplay.innerHTML = time < 0 ? 0 : timeleft
+// }
+
+// // timer function
+// function startTimer() {
+//   myTimer = setInterval(timer, 1000)
+// }
+
+// function stopTimer() {
+//   if (myTimer) {clearInterval(myTimer)}
+//    timeleftDisplay.innerHTML = time < 0 ? 0 : timeleft
+// }
 
 
 
 startButton.addEventListener("click", startQuiz)
 for (let i = 0; i < answerbuttons.length; i++) {
-  answerbuttons[i].addEventListener("click" ,selectAnswer)
-  
+  answerbuttons[i].addEventListener("click" ,selectAnswer) 
 }
+
 initialBtn.addEventListener("click",saveScore)
 initialInput.addEventListener("input", handleSubmitButtonState)
- 
+
   
 
