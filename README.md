@@ -2,19 +2,16 @@ Title: Code Quiz
 
 Usage:HTML, CSS & JavaScript
 
+Instruction on Code Quiz
+Press "Start" button & start game.
 
+Race agaist timer to complete the quiz.
+Answering correct 1 point is added.
+Answeing incorrect 2 second deducted.
 
-
-
-
-
-
-
-
-
-
-
-
+When done you will be prompted to enter 
+your initials which will be saved on the 
+Scoreboard.
 
 
 
