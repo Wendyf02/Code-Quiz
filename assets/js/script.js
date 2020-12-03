@@ -31,7 +31,7 @@ let shufflequestion, currentQuestionIndex
 
 // function start quiz
 function startQuiz() { 
-   StartTimer();
+   startTimer();
    startButton.classList.add("hide")
    scoreDisplay.classList.add("hide")
    questioncontainerEl.classList.remove("hide")
@@ -158,7 +158,6 @@ function viewScores() {
 }
 
 
-// // timer variables
 var myTimer = null
 var timer = function(){
     if(timeLeft <= 0) {
