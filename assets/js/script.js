@@ -16,11 +16,11 @@ var initialEl = document.getElementById("initials");
 
 var scoreDiv = document.getElementById("viewscore");
 var scoreDisplay = document.getElementById("high-scores");
-var timeleftDisplay = document.querySelector("#time-left");
+var timeLeftDisplay = document.querySelector("#time-left");
 // var countdownEl = document.getElementById("time-left");
 
 var answerStatusEl = document.getElementById("answer-status");
-// var selectAnswerTimeout = null
+var selectAnswerTimeout = null
 var highscores = []
 
 let timeLeft = 20;
@@ -114,15 +114,6 @@ function renderQuestion()   {
 }
 
 
-
-//save score
-function saveScore() {
-    var scoreDiv = document.createElement("div")
-    scoreDiv.innerHTML = "<h2>" + initialInput.value + "</h2><div>" + score + "</div>"
-    document.getElementById("scoreContainer").append(scoreDiv)
-    displayScores()
-}
-
 // initials function
 function enterInitials() {
       initialEl.classList.remove("hide")
@@ -138,7 +129,6 @@ function handleSubmitButtonState() {
          }
 }
 
-
 //display scores
 function displayScores() {
   initialEl.classList.add("hide")
@@ -148,33 +138,43 @@ function displayScores() {
   
 }
 
-function viewScores() {
-   stopTimer()
-   ClearTimeout(selectAnswerTimeout)
-   questioncontainerEl.classList.add("hide")
-   displayScores()
+
+// //save score
+function saveScore() {
+    var scoreDiv = document.createElement("div")
+    scoreDiv.innerHTML = "<h2>" + initialInput.value + "</h2><div>" + score + "</div>"
+    document.getElementById("scoreContainer").append(scoreDiv)
+    displayScores()
 }
 
+// function viewScores() {
+     stopTimer()
+     ClearTimeout(selectAnswerTimeout)
+     questioncontainerEl.classList.add("hide")
+     displayScores()
+
+
+
 // // timer variables
-// var myTimer = null
-// var timer = function(){
-//     if(timeLeft <= 0) {
-//       stopTimer();
-//       enterInitials();
-//     }
-//     const time = --timeLeft
-//     timeleftDisplay.innerHTML = time < 0 ? 0 : timeleft
-// }
+var myTimer = null
+var timer = function(){
+    if(timeLeft <= 0) {
+       stopTimer();
+      enterInitials();
+     }
+    const time = --timeLeft
+     timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+}
 
-// // timer function
-// function startTimer() {
-//   myTimer = setInterval(timer, 1000)
-// }
+// timer function
+    function startTimer() {
+    myTimer = setInterval(timer, 1000)
+}
 
-// function stopTimer() {
-//   if (myTimer) {clearInterval(myTimer)}
-//    timeleftDisplay.innerHTML = time < 0 ? 0 : timeleft
-// }
+function stopTimer() {
+    if (myTimer) {clearInterval(myTimer)}
+    timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+  }
 
 
 
