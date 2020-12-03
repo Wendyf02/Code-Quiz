@@ -44,6 +44,11 @@
 //    initialBtn.setAttribute("disabled" , correct)
 //  }
 
+// // function viewScores() {
+//      stopTimer()
+//      ClearTimeout(selectAnswerTimeout)
+//      questioncontainerEl.classList.add("hide")
+//      displayScores()
 
 
 

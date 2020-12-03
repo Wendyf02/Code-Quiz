@@ -1,4 +1,5 @@
 var startButton = document.getElementById("start-btn");
+var StartTimer = document.getElementById("countdown")
 var answerbuttons = document.getElementsByClassName("answer-Btn")
 
 var questioncontainerEl = document.getElementById("question-container");
@@ -129,30 +130,31 @@ function handleSubmitButtonState() {
          }
 }
 
+
+//save score
+function saveScore() {
+  var scoreDiv = document.createElement("div")
+  scoreDiv.innerHTML = "<h2>" + initialInput.value + "</h2><div>" + score + "</div>"
+  document.getElementById("scoreContainer").append(scoreDiv)
+  displayScores()
+}
+
+
 //display scores
 function displayScores() {
   initialEl.classList.add("hide")
   scoreDisplay.classList.remove("hide")
   startButton.innerText = "restart"
   startButton.classList.remove("hide")
-  
 }
 
 
-// //save score
-function saveScore() {
-    var scoreDiv = document.createElement("div")
-    scoreDiv.innerHTML = "<h2>" + initialInput.value + "</h2><div>" + score + "</div>"
-    document.getElementById("scoreContainer").append(scoreDiv)
-    displayScores()
+function viewScores() {
+      stopTimer()
+      ClearTimeout(selectAnswerTimeout)
+      questioncontainerEl.classList.add("hide")
+      displayScores()
 }
-
-// function viewScores() {
-     stopTimer()
-     ClearTimeout(selectAnswerTimeout)
-     questioncontainerEl.classList.add("hide")
-     displayScores()
-
 
 
 // // timer variables
@@ -160,10 +162,10 @@ var myTimer = null
 var timer = function(){
     if(timeLeft <= 0) {
        stopTimer();
-      enterInitials();
+       enterInitials();
      }
     const time = --timeLeft
-     timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+     timeLeftDisplay.innerText = timeLeft--;
 }
 
 // timer function
@@ -172,11 +174,11 @@ var timer = function(){
 }
 
 function stopTimer() {
-    if (myTimer) {clearInterval(myTimer)}
-    timeLeftDisplay.innerHTML = time < 0 ? 0 : timeleft
+    if (myTimer) clearInterval(myTimer);
   }
 
 
+  
 
 startButton.addEventListener("click", startQuiz)
 for (let i = 0; i < answerbuttons.length; i++) {
