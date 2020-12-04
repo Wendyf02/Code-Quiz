@@ -4,6 +4,7 @@
 }
 
 /*------color-------*/
+
 :root {
     --primary:  rgb(239, 241, 243);
     --secondary: rgb(121, 121, 126);
@@ -20,7 +21,7 @@ header {
     top: 0;
     border-bottom: double var(--tertiary) 10px;
     text-align: center;
-}   
+}     
 
 header h1 {
     font-weight: lighter;
@@ -80,10 +81,11 @@ body {
     justify-content: center;
     font-size: 3vw;
     margin: 40px;
-    color: var(--primary);
-}
+    color: var(--primary)
+} 
 
 /*-----BUTTONS-----*/
+
 .btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -108,13 +110,15 @@ body {
 .score:hover {
     color: var(--tertiary);  
 }
+
 .start-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
 }
 
-/*---- SCORE------*/
+/*---- initials & SCORE------*/
+
 .initial-text-box, .initial-btn {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -138,6 +142,7 @@ body {
     justify-content: space-between;
 }
 
+/*--------footer-----*/
 
 .footer {
     position: fixed;

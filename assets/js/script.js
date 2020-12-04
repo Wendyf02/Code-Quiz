@@ -17,8 +17,7 @@ var initialEl = document.getElementById("initials");
 
 var scoreDiv = document.getElementById("viewscore");
 var scoreDisplay = document.getElementById("high-scores");
-var timeLeftDisplay = document.querySelector("#time-left");
-// var countdownEl = document.getElementById("time-left");
+var timeleftDisplay = document.querySelector("#time-left");
 
 var answerStatusEl = document.getElementById("answer-status");
 var selectAnswerTimeout = null
@@ -36,8 +35,9 @@ function startQuiz() {
    scoreDisplay.classList.add("hide")
    questioncontainerEl.classList.remove("hide")
    shuffleQuestions = questions.sort(() => Math.random() - .5)
-   currentQuestionIndex = 0
+   Index = 0
    renderQuestion();
+   timeLeft = 20;
 }
 
 // function to make render question appear 
@@ -64,8 +64,8 @@ function selectAnswer(e) {
             index++
             renderQuestion()
         } else {
-            // stopTimer()
-            enterInitials()  
+          stopTimer()
+          enterInitials()  
         }  
 }
   
@@ -100,9 +100,9 @@ var questions =[
 
   }, 
  {
-      question: "How can you add comment in JavaScript?", 
-      answer: ["'comment" ,"//comment"  , "|| comment ", "All of the above"], 
-      correct: "//comment"  
+      question: "What are javaScript Data Types?", 
+      answer: ["Number" ,"String"  , "Boolean", "All of the above"], 
+      correct: "All of the above"  
 
   }  
 ]
@@ -118,8 +118,9 @@ function renderQuestion()   {
 
 // initials function
 function enterInitials() {
-      initialEl.classList.remove("hide")
+       initialEl.classList.remove("hide")
        questioncontainerEl.classList.add("hide")
+       
 }
 
 //ensure initials are entered before saving
@@ -143,16 +144,17 @@ function saveScore() {
 
 //display scores
 function displayScores() {
-  initialEl.classList.add("hide")
-  scoreDisplay.classList.remove("hide")
-  startButton.innerText = "restart"
-  startButton.classList.remove("hide")
+   initialEl.classList.add("hide")
+   scoreDisplay.classList.remove("hide")
+   startButton.innerText = "restart"
+   startButton.classList.remove("hide")
+ 
 }
 
 
 function viewScores() {
       stopTimer()
-      ClearTimeout(selectAnswerTimeout)
+      clearTimeout(selectAnswerTimeout)
       questioncontainerEl.classList.add("hide")
       displayScores()
 }
@@ -165,7 +167,7 @@ var timer = function(){
        enterInitials();
      }
     const time = --timeLeft
-     timeLeftDisplay.innerText = timeLeft--;
+     timeleftDisplay.innerText = timeLeft--;
 }
 
 // timer function
@@ -182,10 +184,10 @@ function stopTimer() {
 
 startButton.addEventListener("click", startQuiz)
 for (let i = 0; i < answerbuttons.length; i++) {
-  answerbuttons[i].addEventListener("click" ,selectAnswer) 
+  answerbuttons[i].addEventListener("click" , selectAnswer) 
 }
 
-initialBtn.addEventListener("click",saveScore)
+initialBtn.addEventListener("click", saveScore)
 initialInput.addEventListener("input", handleSubmitButtonState)
 
   

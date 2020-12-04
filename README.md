@@ -3,6 +3,7 @@ Title: Code Quiz
 Usage:HTML, CSS & JavaScript
 
 Instruction on Code Quiz
+
 Press "Start" button & start game.
 
 Race agaist timer to complete the quiz.
@@ -14,13 +15,15 @@ your initials which will be saved on the
 Scoreboard.
 
 
-
 ![GitHub](assets/screenshot.png)
+
+
 
 
 Source:
 
-to get and idea of what components to have in a Quiz Game
+Sources of what components to have in a Quiz Game.
+
 How to make a quiz App using HTML CSS-Vanilla javaScript
 https://www.youtube.com/watch?v=f4fB9Xg2JEY
 
@@ -43,5 +46,11 @@ Timer
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden
 https://www.youtube.com/watch?v=x7WJEmxNlEs&list=RDCMUCeU-1X402kT-JlLdAitxSMA&index=1
 
+Window clear Timeout( Method)
+https://www.w3schools.com/jsref/met_win_cleartimeout.asp
+
 Render Question
 https://stackoverflow.com/questions/21112521/how-to-render-text-from-javascript-object-in-html-form
+
+Top 85 JavaScript Interview Questions and Answers
+Top%2085%20JavaScript%20Interview%20Questions%20&%20Answers.webarchive
